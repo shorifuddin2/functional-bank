@@ -17,6 +17,18 @@ function updateTotalField(totalFieldId, amount){
    totalElement.innerText = previousTotal + amount;
 }
 
+function updateBalance(amount, isAdd){
+   const balanceTotal = document.getElementById('balance-total');
+   const balanceTotalText = balanceTotal.innerText;
+   const previousBalanceTotal = parseFloat(balanceTotalText);
+   if(isAdd == true){
+      balanceTotal.innerText = previousBalanceTotal + amount;
+   }
+   else{
+      balanceTotal.innerText = previousBalanceTotal - amount;
+   }
+}
+
   document.getElementById('deposit-button').addEventListener('click', function () {
    // const depositInput = document.getElementById('deposit-input');
    // const depositAmountText = depositInput.value;
@@ -33,11 +45,11 @@ function updateTotalField(totalFieldId, amount){
    updateTotalField('deposit-total',depositAmount);
 
 //update balance
-   const balanceTotal = document.getElementById('balance-total');
-   const balanceTotalText = balanceTotal.innerText;
-   const previousBalanceTotal = parseFloat(balanceTotalText);
-   balanceTotal.innerText = previousBalanceTotal + depositAmount;
-
+   // const balanceTotal = document.getElementById('balance-total');
+   // const balanceTotalText = balanceTotal.innerText;
+   // const previousBalanceTotal = parseFloat(balanceTotalText);
+   // balanceTotal.innerText = previousBalanceTotal + depositAmount;
+   updateBalance(depositAmount, true);
 });
 
 // handle withdraw button
@@ -56,11 +68,11 @@ function updateTotalField(totalFieldId, amount){
 
     updateTotalField('withdraw-total', withdrawAmount);
     // update balance after withdraw
-    const balanceTotal = document.getElementById('balance-total');
+   //  const balanceTotal = document.getElementById('balance-total');
 
-    const balanceTotalText = balanceTotal.innerText;
-    const previousBalanceTotal = parseFloat(balanceTotalText);
+   //  const balanceTotalText = balanceTotal.innerText;
+   //  const previousBalanceTotal = parseFloat(balanceTotalText);
 
-    balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
-
+   //  balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
+      updateBalance(withdrawAmount, false);
 });
